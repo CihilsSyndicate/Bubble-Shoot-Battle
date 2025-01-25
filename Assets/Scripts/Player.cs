@@ -1,21 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeedBackup = 3f;
+    [SerializeField] private float moveSpeedBackup = 3f; // Default move speed
     private float moveSpeed;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private GameInput gameInput;
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private Animator animator;
+    [SerializeField] private GameInput gameInput; // Input handler
+    [SerializeField] private Rigidbody rb; // Rigidbody for physics
+    [SerializeField] private Animator animator; // Animator for animations
 
     private bool isWalking;
     private bool isRunning;
     private bool isJumping;
-    //public bool isGrounded = true;
 
     private void Awake()
     {
@@ -24,19 +21,21 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (animator.GetBool("IsEmoting") == true)
+        if (animator.GetBool("IsEmoting"))
         {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("IsWalking", false);
-            animator.SetBool("IsRunning", false);
-            animator.SetBool("IsShooting", false);
+            ResetAllAnimatorFlags();
             return;
         }
 
+        HandleMovement();
+        HandleActions();
+    }
+
+    private void HandleMovement()
+    {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
-        // Periksa apakah sprint dan walking ditekan bersamaan
         if (gameInput.GetSprintInput() && isWalking)
         {
             isRunning = true;
@@ -51,62 +50,64 @@ public class Player : MonoBehaviour
         transform.position += moveDir * moveSpeed * Time.deltaTime;
         isWalking = moveDir != Vector3.zero;
 
-        // Perbaiki rotasi agar karakter selalu menghadap ke arah pergerakan
+        // Rotate character to face movement direction
         if (isWalking)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
+    }
 
+    // Handle player actions like jumping, emoting, and shooting
+    private void HandleActions()
+    {
         if (gameInput.GetJumpInput())
         {
             Jump();
         }
 
-        if (gameInput.GetEmoteInput() && animator.GetBool("IsEmoting") == false)
+        if (gameInput.GetEmoteInput() && !animator.GetBool("IsEmoting"))
         {
             animator.SetBool("IsEmoting", true);
         }
 
-        if (gameInput.GetShootInput() && animator.GetBool("IsShooting") == false)
+        if (gameInput.GetShootInput() && !animator.GetBool("IsShooting") && !isWalking && !isRunning)
         {
             animator.SetBool("IsShooting", true);
         }
     }
 
+    // Jump logic
     private void Jump()
     {
         isJumping = true;
         animator.SetBool("IsJumping", isJumping);
     }
-     
-    public bool IsWalking()
-    {
-        return isWalking;
-    }
 
-    public bool IsRunning()
-    {
-        return isRunning;
-    }
-
-    public bool IsJumping()
-    {
-        return isJumping;
-    }
-
-    public void OnJumpAnimationEnd()
-    {
-        isJumping = false;
-        animator.SetBool("IsJumping", isJumping);
-    }
-
-    public void OnEmoteAnimationStart()
+    // Reset all animator flags
+    private void ResetAllAnimatorFlags()
     {
         animator.SetBool("IsJumping", false);
         animator.SetBool("IsWalking", false);
         animator.SetBool("IsRunning", false);
         animator.SetBool("IsShooting", false);
+    }
+
+    // Public helper methods for external access
+    public bool IsWalking() => isWalking;
+    public bool IsRunning() => isRunning;
+    public bool IsJumping() => isJumping;
+
+    // Animation Event handlers
+    public void OnJumpAnimationEnd()
+    {
+        isJumping = false;
+        animator.SetBool("IsJumping", false);
+    }
+
+    public void OnEmoteAnimationStart()
+    {
+        ResetAllAnimatorFlags();
     }
 
     public void OnEmoteAnimationEnd()
@@ -116,15 +117,11 @@ public class Player : MonoBehaviour
 
     public void OnShootAnimationStart()
     {
-        animator.SetBool("IsJumping", false);
-        animator.SetBool("IsWalking", false);
-        animator.SetBool("IsRunning", false);
-        animator.SetBool("IsEmoting", false);
+        ResetAllAnimatorFlags();
     }
 
     public void OnShootAnimationEnd()
     {
         animator.SetBool("IsShooting", false);
     }
-
 }
