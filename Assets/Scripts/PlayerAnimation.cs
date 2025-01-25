@@ -9,7 +9,6 @@ public class PlayerAnimation : MonoBehaviour
     private const string IS_RUNNING = "IsRunning";
     private const string IS_JUMPING = "IsJumping";
 
-
     [SerializeField] private Player player;
     private void Awake()
     {

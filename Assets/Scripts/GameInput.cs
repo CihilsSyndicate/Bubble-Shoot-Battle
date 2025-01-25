@@ -35,4 +35,9 @@ public class GameInput : MonoBehaviour
     {
         return playerInputAction.Player.Sprint.IsPressed();
     }
+
+    public bool GetEmoteInput()
+    {
+        return playerInputAction.Player.Emote.triggered;
+    }
 }
