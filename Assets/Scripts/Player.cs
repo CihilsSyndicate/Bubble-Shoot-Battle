@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     private bool isWalking;
+    private bool isRunning;
+    private bool isJumping;
     public bool isGrounded = true;
 
     private void Update()
@@ -21,10 +23,12 @@ public class Player : MonoBehaviour
 
         if (gameInput.GetSprintInput())
         {
+            isRunning = true;
             moveSpeed = 5;
         }
         else
         {
+            isRunning = false;
             moveSpeed = 3;
         }
 
@@ -45,6 +49,7 @@ public class Player : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;
+        isJumping = true;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -52,11 +57,21 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            isJumping = false;
         }
     }
 
     public bool IsWalking()
     {
         return isWalking;
+    }
+    public bool IsRunning()
+    {
+        return isRunning;
+    }
+
+    public bool IsJumping()
+    {
+        return isJumping;
     }
 }
