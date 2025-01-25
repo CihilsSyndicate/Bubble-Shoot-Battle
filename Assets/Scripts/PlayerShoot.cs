@@ -12,9 +12,13 @@ public class PlayerShoot : MonoBehaviour
 
     private float lastShootTime;
 
+    private void Start()
+    {
+        gameInput = FindObjectOfType<GameInput>();
+    }
     private void Update()
     {
-        if (gameInput.GetShootInput() && Time.time > lastShootTime + shootCooldown)
+        if (gameInput.GetShootInput(this.gameObject) && Time.time > lastShootTime + shootCooldown)
         {
             Shoot();
             lastShootTime = Time.time;

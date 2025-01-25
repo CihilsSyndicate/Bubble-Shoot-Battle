@@ -5,39 +5,121 @@ using UnityEngine;
 
 public class GameInput : MonoBehaviour
 {
+
     private PlayerInputAction playerInputAction;
-    [SerializeField] private GameManager gameManager;
 
     private void Awake()
     {
         playerInputAction = new PlayerInputAction();
-        playerInputAction.Player.Enable();
+        playerInputAction.Enable();
+
     }
 
-    public Vector2 GetMovementVectorNormalized()
+    public void EnablePlayerInput(int playerIndex)
+    {
+        switch (playerIndex)
+        {
+            case 0:
+                playerInputAction.Player.Enable();
+                break;
+            case 1:
+                playerInputAction.Player2.Enable();
+                break;
+            case 2:
+                playerInputAction.Player3.Enable();
+                break;
+            case 3:
+                playerInputAction.Player4.Enable();
+                break;
+        }
+    }
+
+    public Vector2 GetMovementVectorNormalized(GameObject GO)
     {
         Vector2 inputVector = playerInputAction.Player.Move.ReadValue<Vector2>();
-        inputVector = inputVector.normalized;
-        return inputVector;
+
+        // If this is a specific player's input script
+        switch (GO.name)
+        {
+            case "Player2(Clone)":
+                inputVector = playerInputAction.Player2.Move.ReadValue<Vector2>();
+                break;
+            case "Player3(Clone)":
+                inputVector = playerInputAction.Player3.Move.ReadValue<Vector2>();
+                break;
+            case "Player4(Clone)":
+                inputVector = playerInputAction.Player4.Move.ReadValue<Vector2>();
+                break;
+        }
+
+        return inputVector.normalized;
     }
 
-    public bool GetJumpInput()
+    public bool GetJumpInput(GameObject GO)
     {
-        return playerInputAction.Player.Jump.triggered;
+        switch (GO.name)
+        {
+            case "Player(Clone)":
+                return playerInputAction.Player.Jump.triggered;
+            case "Player2(Clone)":
+                return playerInputAction.Player2.Jump.triggered;
+            case "Player3(Clone)":
+                return playerInputAction.Player3.Jump.triggered;
+            case "Player4(Clone)":
+                return playerInputAction.Player4.Jump.triggered;
+            default:
+                return false;
+        }
     }
 
-    public bool GetShootInput()
+    public bool GetShootInput(GameObject GO)
     {
-        return playerInputAction.Player.Shoot.triggered;
+        switch (GO.name)
+        {
+            case "Player(Clone)":
+                return playerInputAction.Player.Shoot.triggered;
+            case "Player2(Clone)":
+                return playerInputAction.Player2.Shoot.triggered;
+            case "Player3(Clone)":
+                return playerInputAction.Player3.Shoot.triggered;
+            case "Player4(Clone)":
+                return playerInputAction.Player4.Shoot.triggered;
+            default:
+                return false;
+        }
     }
 
-    public bool GetSprintInput()
+    public bool GetSprintInput(GameObject GO)
     {
-        return playerInputAction.Player.Sprint.IsPressed();
+        switch (GO.name)
+        {
+            case "Player(Clone)":
+                return playerInputAction.Player.Sprint.IsPressed();
+            case "Player2(Clone)":
+                return playerInputAction.Player2.Sprint.IsPressed();
+            case "Player3(Clone)":
+                return playerInputAction.Player3.Sprint.IsPressed();
+            case "Player4(Clone)":
+                return playerInputAction.Player4.Sprint.IsPressed();
+            default:
+                return false;
+        }
     }
 
-    public bool GetEmoteInput()
+    public bool GetEmoteInput(GameObject GO)
     {
-        return playerInputAction.Player.Emote.triggered;
+        switch (GO.name)
+        {
+            case "Player(Clone)":
+                return playerInputAction.Player.Emote.triggered;
+            case "Player2(Clone)":
+                return playerInputAction.Player2.Emote.triggered;
+            case "Player3(Clone)":
+                return playerInputAction.Player3.Emote.triggered;
+            case "Player4(Clone)":
+                return playerInputAction.Player4.Emote.triggered;
+            default:
+                return false;
+        }
     }
 }

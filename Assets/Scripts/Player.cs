@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
         moveSpeed = moveSpeedBackup;
     }
 
+    private void Start()
+    {
+        gameInput = FindObjectOfType<GameInput>();
+    }
+
     private void Update()
     {
         if (animator.GetBool("IsEmoting"))
@@ -33,10 +38,10 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized(this.gameObject);
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
-        if (gameInput.GetSprintInput() && isWalking)
+        if (gameInput.GetSprintInput(this.gameObject) && isWalking)
         {
             isRunning = true;
             moveSpeed = moveSpeedBackup + 4;
@@ -61,17 +66,17 @@ public class Player : MonoBehaviour
     // Handle player actions like jumping, emoting, and shooting
     private void HandleActions()
     {
-        if (gameInput.GetJumpInput())
+        if (gameInput.GetJumpInput(this.gameObject))
         {
             Jump();
         }
 
-        if (gameInput.GetEmoteInput() && !animator.GetBool("IsEmoting"))
+        if (gameInput.GetEmoteInput(this.gameObject) && !animator.GetBool("IsEmoting"))
         {
             animator.SetBool("IsEmoting", true);
         }
 
-        if (gameInput.GetShootInput() && !animator.GetBool("IsShooting") && !isWalking && !isRunning)
+        if (gameInput.GetShootInput(this.gameObject) && !animator.GetBool("IsShooting") && !isWalking && !isRunning)
         {
             animator.SetBool("IsShooting", true);
         }
