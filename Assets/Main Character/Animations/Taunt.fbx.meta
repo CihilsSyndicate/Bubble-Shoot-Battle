@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1f5664bd12969a247b632af8a4fd69eb
+guid: d674e04098ee1954ca8c6208f9cce8af
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Running Normal
+      name: Taunt
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 19
+      lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
