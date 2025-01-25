@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b03601bc169909c42a19d71b44482c86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,7 +101,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -146,5 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5385b15b692bcb54985f7feb59baaeb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceSpeedMultiplier: 1
-  maxBounces: 2
+  hitEffect: {fileID: 876581188219980219, guid: 5c42081185c31544db838fe3d9aabc89, type: 3}
