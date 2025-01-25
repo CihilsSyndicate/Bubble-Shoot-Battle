@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a1410469999ffa543b933a0b682a9c0e
+guid: f16c9255664d33049a5d32c9bcb860b2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Flying Back Death
+      name: Walk With Rifle
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 91
+      lastFrame: 43
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
