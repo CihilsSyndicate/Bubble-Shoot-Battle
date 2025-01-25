@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f16c9255664d33049a5d32c9bcb860b2
+guid: d5fe7f92f019360489043bf93d6f3862
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walk With Rifle
+      name: Walk
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
