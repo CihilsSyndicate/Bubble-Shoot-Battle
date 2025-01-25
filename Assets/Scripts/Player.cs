@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private Rigidbody rb;
@@ -21,17 +21,17 @@ public class Player : MonoBehaviour
 
         if (gameInput.GetSprintInput())
         {
-            moveSpeed = 11;
+            moveSpeed = 5;
         }
         else
         {
-            moveSpeed = 7;
+            moveSpeed = 3;
         }
 
         transform.position += moveDir * moveSpeed * Time.deltaTime;
         isWalking = moveDir != Vector3.zero;
 
-        float rotateSpeed = 10f;
+        float rotateSpeed = 10;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
 
         if (gameInput.GetJumpInput() && isGrounded)
