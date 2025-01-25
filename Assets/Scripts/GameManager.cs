@@ -9,48 +9,64 @@ public class GameManager : MonoBehaviour
 
     private const int MAX_PLAYERS = 4;
     private GameObject[] activePlayers = new GameObject[MAX_PLAYERS];
+    private int selectedPlayerCount = 2; // Jumlah pemain yang dipilih
 
-    private void Update()
+    private void Start()
     {
-        // Spawn new player with Space key if not at max players
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SpawnAdditionalPlayer();
-        }
+        // Pilih jumlah pemain di awal game
+        SelectPlayerCount();
     }
 
-    private void SpawnAdditionalPlayer()
+    private void SelectPlayerCount()
     {
-        // Find first empty player slot
-        int emptySlot = FindEmptyPlayerSlot();
+        Debug.Log("Pilih jumlah pemain (1 hingga " + MAX_PLAYERS + "):");
 
-        if (emptySlot != -1 && playerPrefab != null && emptySlot < playerSpawnPoints.Length)
+        // Simulasi jumlah pemain (bisa diganti dengan UI input)
+        selectedPlayerCount = 2; // Ubah sesuai kebutuhan (contoh 2 pemain)
+
+        // Validasi jumlah pemain
+        if (selectedPlayerCount < 1 || selectedPlayerCount > MAX_PLAYERS)
         {
-            // Instantiate player at the spawn point
-            GameObject newPlayer = Instantiate(playerPrefab, playerSpawnPoints[emptySlot].position, Quaternion.identity);
+            Debug.LogError("Jumlah pemain tidak valid. Mengatur ke jumlah minimal (1).");
+            selectedPlayerCount = 1;
+        }
 
-            // Update the name of the player object
-            if (emptySlot > 0) // Skip naming for the first player (index 0)
+        // Spawn pemain berdasarkan jumlah yang dipilih
+        SpawnPlayers();
+    }
+
+    private void SpawnPlayers()
+    {
+        // Buat daftar posisi spawn yang diacak
+        List<Transform> shuffledSpawnPoints = new List<Transform>(playerSpawnPoints);
+        ShuffleList(shuffledSpawnPoints);
+
+        for (int i = 0; i < selectedPlayerCount; i++)
+        {
+            if (i < shuffledSpawnPoints.Count)
             {
-                newPlayer.name = $"Player{emptySlot + 1}(Clone)";
+                // Spawn player di posisi yang sudah diacak
+                GameObject newPlayer = Instantiate(playerPrefab, shuffledSpawnPoints[i].position, Quaternion.identity);
+
+                // Update nama player
+                newPlayer.name = $"Player{i + 1}";
+
+                // Assign player ke array aktif
+                activePlayers[i] = newPlayer;
+
+                // Setup input untuk player
+                //SetupPlayerInput(newPlayer, i);
             }
-
-            // Ensure the player is assigned properly
-            activePlayers[emptySlot] = newPlayer;
-
-            // Setup input for the new player
-            SetupPlayerInput(newPlayer, emptySlot);
-        }
-        else
-        {
-            Debug.LogWarning("Cannot spawn player: Either max players reached or spawn points exceeded.");
+            else
+            {
+                Debug.LogWarning("Tidak cukup posisi spawn untuk semua pemain.");
+                break;
+            }
         }
     }
-
 
     private void SetupPlayerInput(GameObject playerObject, int playerIndex)
     {
-        // Try to find GameInput and assign player input
         GameInput gameInput = playerObject.GetComponent<GameInput>();
         if (gameInput != null)
         {
@@ -58,19 +74,19 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"GameInput is missing on the player prefab. Make sure the player prefab has a GameInput component.");
+            Debug.LogWarning($"GameInput is missing on the player prefab. Make sure the player prefab has a GameInput component.");
         }
     }
 
-    private int FindEmptyPlayerSlot()
+    private void ShuffleList(List<Transform> list)
     {
-        for (int i = 0; i < activePlayers.Length; i++)
+        // Algoritma Fisher-Yates Shuffle
+        for (int i = list.Count - 1; i > 0; i--)
         {
-            if (activePlayers[i] == null)
-            {
-                return i;
-            }
+            int randomIndex = Random.Range(0, i + 1);
+            Transform temp = list[i];
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
         }
-        return -1;
     }
 }

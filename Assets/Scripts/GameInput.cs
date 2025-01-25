@@ -41,13 +41,13 @@ public class GameInput : MonoBehaviour
         // If this is a specific player's input script
         switch (GO.name)
         {
-            case "Player2(Clone)":
+            case "Player2":
                 inputVector = playerInputAction.Player2.Move.ReadValue<Vector2>();
                 break;
-            case "Player3(Clone)":
+            case "Player3":
                 inputVector = playerInputAction.Player3.Move.ReadValue<Vector2>();
                 break;
-            case "Player4(Clone)":
+            case "Player4":
                 inputVector = playerInputAction.Player4.Move.ReadValue<Vector2>();
                 break;
         }
@@ -59,13 +59,13 @@ public class GameInput : MonoBehaviour
     {
         switch (GO.name)
         {
-            case "Player(Clone)":
+            case "Player1":
                 return playerInputAction.Player.Jump.triggered;
-            case "Player2(Clone)":
+            case "Player2":
                 return playerInputAction.Player2.Jump.triggered;
-            case "Player3(Clone)":
+            case "Player3":
                 return playerInputAction.Player3.Jump.triggered;
-            case "Player4(Clone)":
+            case "Player4":
                 return playerInputAction.Player4.Jump.triggered;
             default:
                 return false;
@@ -76,13 +76,13 @@ public class GameInput : MonoBehaviour
     {
         switch (GO.name)
         {
-            case "Player(Clone)":
+            case "Player1":
                 return playerInputAction.Player.Shoot.triggered;
-            case "Player2(Clone)":
+            case "Player2":
                 return playerInputAction.Player2.Shoot.triggered;
-            case "Player3(Clone)":
+            case "Player3":
                 return playerInputAction.Player3.Shoot.triggered;
-            case "Player4(Clone)":
+            case "Player4":
                 return playerInputAction.Player4.Shoot.triggered;
             default:
                 return false;
@@ -93,13 +93,13 @@ public class GameInput : MonoBehaviour
     {
         switch (GO.name)
         {
-            case "Player(Clone)":
+            case "Player1":
                 return playerInputAction.Player.Sprint.IsPressed();
-            case "Player2(Clone)":
+            case "Player2":
                 return playerInputAction.Player2.Sprint.IsPressed();
-            case "Player3(Clone)":
+            case "Player3":
                 return playerInputAction.Player3.Sprint.IsPressed();
-            case "Player4(Clone)":
+            case "Player4":
                 return playerInputAction.Player4.Sprint.IsPressed();
             default:
                 return false;
@@ -110,13 +110,13 @@ public class GameInput : MonoBehaviour
     {
         switch (GO.name)
         {
-            case "Player(Clone)":
+            case "Player1":
                 return playerInputAction.Player.Emote.triggered;
-            case "Player2(Clone)":
+            case "Player2":
                 return playerInputAction.Player2.Emote.triggered;
-            case "Player3(Clone)":
+            case "Player3":
                 return playerInputAction.Player3.Emote.triggered;
-            case "Player4(Clone)":
+            case "Player4":
                 return playerInputAction.Player4.Emote.triggered;
             default:
                 return false;
