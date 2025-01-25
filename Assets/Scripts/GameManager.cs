@@ -5,15 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public int[] idPlayer;
+    public int player;
 
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && player < 5)
         {
-            //idPlayer[]++;
+            player++;
         }
     }
 }

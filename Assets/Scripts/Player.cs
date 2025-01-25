@@ -5,11 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeedBackup = 3f; // Default move speed
-    private float moveSpeed;
     [SerializeField] private GameInput gameInput; // Input handler
     [SerializeField] private Rigidbody rb; // Rigidbody for physics
     [SerializeField] private Animator animator; // Animator for animations
 
+    private float moveSpeed;
     private bool isWalking;
     private bool isRunning;
     private bool isJumping;
