@@ -6217,10 +6217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedBackup: 3
-  jumpForce: 7
   gameInput: {fileID: 126694471}
   rb: {fileID: 1039446357}
-  animator: {fileID: 0}
+  animator: {fileID: 1039446359}
 --- !u!54 &1039446357
 Rigidbody:
   m_ObjectHideFlags: 0
