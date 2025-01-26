@@ -9179,7 +9179,7 @@ MonoBehaviour:
   showSocial3: 1
   showVersion: 1
   showFade: 1
-  sceneToLoad: Test
+  sceneToLoad: Lobby
   logo: {fileID: 21300000, guid: 13608ed6ad7a1fb4aacd43cbd09a716f, type: 3}
   background: {fileID: 21300000, guid: fe7122a79fc72824d9b04efb59b1713d, type: 3}
   buttons: {fileID: 5665413695130676986, guid: 076197847ba151147b3f5ca6d92ef0fd, type: 3}
