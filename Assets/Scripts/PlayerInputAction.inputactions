@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SShoot",
+                    "type": "Button",
+                    "id": "ee79d3b4-2edd-4bf7-a65a-3489958652c6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -150,6 +159,17 @@
                     "action": "Emote",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f33d73eb-4ea0-4166-b8e4-fa9787d8ae93",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -165,6 +185,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SShoot",
+                    "type": "Button",
+                    "id": "e7ae1004-5f3f-4f40-bcfe-4b5ad21a7b5c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Emote",
@@ -258,6 +287,17 @@
                     "action": "Emote",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a3a0cca7-1186-4533-8ebc-c2f05803f645",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -269,6 +309,15 @@
                     "name": "Emote",
                     "type": "Button",
                     "id": "f2b07ae1-2a74-4f61-b740-265dad88e49d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SShoot",
+                    "type": "Button",
+                    "id": "e265011d-79ca-4ddf-88c7-a2e6dfa4a0cf",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -410,6 +459,17 @@
                     "action": "Emote",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9913cfa8-01d7-4b25-becb-94b8cacc30e6",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -425,6 +485,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SShoot",
+                    "type": "Button",
+                    "id": "6f71ced5-9e76-44dc-b3dd-09f4c9a03d11",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Jump",
@@ -560,6 +629,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Emote",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4ebcaee-ef49-43be-ad59-5f94830ea54e",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SShoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

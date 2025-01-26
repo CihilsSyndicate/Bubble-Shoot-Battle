@@ -261,9 +261,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedBackup: 3
-  gameInput: {fileID: 3271156481627317841, guid: 31881e54628a17e42b01bb419eb691db, type: 3}
+  gameInput: {fileID: 0}
   rb: {fileID: 7569914702463770293}
   animator: {fileID: 4318546702191531635}
+  slowSpeed: 1
 --- !u!114 &4150345238100718278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,8 +282,9 @@ MonoBehaviour:
   bulletSpeed: 20
   shootCooldown: 0.5
   specialBulletScale: {x: 0.5, y: 0.5, z: 0.5}
-  gameInput: {fileID: 3271156481627317841, guid: 31881e54628a17e42b01bb419eb691db, type: 3}
+  gameInput: {fileID: 0}
   specialShoot: {fileID: 198357083801700994, guid: 688aa4245172a0b4585d279cfee8f6c3, type: 3}
+  player: {fileID: 238960217201723162}
 --- !u!136 &2902098070030461524
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1295,7 +1297,7 @@ Transform:
   m_GameObject: {fileID: 3094664088339351896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.48, y: 1.21, z: 0.86}
+  m_LocalPosition: {x: -0.303, y: 1.41, z: 0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

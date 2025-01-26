@@ -71,6 +71,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee79d3b4-2edd-4bf7-a65a-3489958652c6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Emote"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f33d73eb-4ea0-4166-b8e4-fa9787d8ae93"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -187,6 +207,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""e7ae1004-5f3f-4f40-bcfe-4b5ad21a7b5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Emote"",
@@ -280,6 +309,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Emote"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3a0cca7-1186-4533-8ebc-c2f05803f645"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -291,6 +331,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""name"": ""Emote"",
                     ""type"": ""Button"",
                     ""id"": ""f2b07ae1-2a74-4f61-b740-265dad88e49d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""e265011d-79ca-4ddf-88c7-a2e6dfa4a0cf"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -432,6 +481,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Emote"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9913cfa8-01d7-4b25-becb-94b8cacc30e6"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -447,6 +507,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f71ced5-9e76-44dc-b3dd-09f4c9a03d11"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Jump"",
@@ -584,6 +653,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Emote"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4ebcaee-ef49-43be-ad59-5f94830ea54e"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -597,9 +677,11 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Emote = m_Player.FindAction("Emote", throwIfNotFound: true);
+        m_Player_SShoot = m_Player.FindAction("SShoot", throwIfNotFound: true);
         // Player2
         m_Player2 = asset.FindActionMap("Player2", throwIfNotFound: true);
         m_Player2_Move = m_Player2.FindAction("Move", throwIfNotFound: true);
+        m_Player2_SShoot = m_Player2.FindAction("SShoot", throwIfNotFound: true);
         m_Player2_Emote = m_Player2.FindAction("Emote", throwIfNotFound: true);
         m_Player2_Sprint = m_Player2.FindAction("Sprint", throwIfNotFound: true);
         m_Player2_Shoot = m_Player2.FindAction("Shoot", throwIfNotFound: true);
@@ -607,6 +689,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         // Player3
         m_Player3 = asset.FindActionMap("Player3", throwIfNotFound: true);
         m_Player3_Emote = m_Player3.FindAction("Emote", throwIfNotFound: true);
+        m_Player3_SShoot = m_Player3.FindAction("SShoot", throwIfNotFound: true);
         m_Player3_Sprint = m_Player3.FindAction("Sprint", throwIfNotFound: true);
         m_Player3_Shoot = m_Player3.FindAction("Shoot", throwIfNotFound: true);
         m_Player3_Jump = m_Player3.FindAction("Jump", throwIfNotFound: true);
@@ -614,6 +697,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         // Player4
         m_Player4 = asset.FindActionMap("Player4", throwIfNotFound: true);
         m_Player4_Move = m_Player4.FindAction("Move", throwIfNotFound: true);
+        m_Player4_SShoot = m_Player4.FindAction("SShoot", throwIfNotFound: true);
         m_Player4_Jump = m_Player4.FindAction("Jump", throwIfNotFound: true);
         m_Player4_Shoot = m_Player4.FindAction("Shoot", throwIfNotFound: true);
         m_Player4_Sprint = m_Player4.FindAction("Sprint", throwIfNotFound: true);
@@ -684,6 +768,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Emote;
+    private readonly InputAction m_Player_SShoot;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -693,6 +778,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Emote => m_Wrapper.m_Player_Emote;
+        public InputAction @SShoot => m_Wrapper.m_Player_SShoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -717,6 +803,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Emote.started += instance.OnEmote;
             @Emote.performed += instance.OnEmote;
             @Emote.canceled += instance.OnEmote;
+            @SShoot.started += instance.OnSShoot;
+            @SShoot.performed += instance.OnSShoot;
+            @SShoot.canceled += instance.OnSShoot;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -736,6 +825,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Emote.started -= instance.OnEmote;
             @Emote.performed -= instance.OnEmote;
             @Emote.canceled -= instance.OnEmote;
+            @SShoot.started -= instance.OnSShoot;
+            @SShoot.performed -= instance.OnSShoot;
+            @SShoot.canceled -= instance.OnSShoot;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -758,6 +850,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player2;
     private List<IPlayer2Actions> m_Player2ActionsCallbackInterfaces = new List<IPlayer2Actions>();
     private readonly InputAction m_Player2_Move;
+    private readonly InputAction m_Player2_SShoot;
     private readonly InputAction m_Player2_Emote;
     private readonly InputAction m_Player2_Sprint;
     private readonly InputAction m_Player2_Shoot;
@@ -767,6 +860,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         private @PlayerInputAction m_Wrapper;
         public Player2Actions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player2_Move;
+        public InputAction @SShoot => m_Wrapper.m_Player2_SShoot;
         public InputAction @Emote => m_Wrapper.m_Player2_Emote;
         public InputAction @Sprint => m_Wrapper.m_Player2_Sprint;
         public InputAction @Shoot => m_Wrapper.m_Player2_Shoot;
@@ -783,6 +877,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @SShoot.started += instance.OnSShoot;
+            @SShoot.performed += instance.OnSShoot;
+            @SShoot.canceled += instance.OnSShoot;
             @Emote.started += instance.OnEmote;
             @Emote.performed += instance.OnEmote;
             @Emote.canceled += instance.OnEmote;
@@ -802,6 +899,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @SShoot.started -= instance.OnSShoot;
+            @SShoot.performed -= instance.OnSShoot;
+            @SShoot.canceled -= instance.OnSShoot;
             @Emote.started -= instance.OnEmote;
             @Emote.performed -= instance.OnEmote;
             @Emote.canceled -= instance.OnEmote;
@@ -836,6 +936,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player3;
     private List<IPlayer3Actions> m_Player3ActionsCallbackInterfaces = new List<IPlayer3Actions>();
     private readonly InputAction m_Player3_Emote;
+    private readonly InputAction m_Player3_SShoot;
     private readonly InputAction m_Player3_Sprint;
     private readonly InputAction m_Player3_Shoot;
     private readonly InputAction m_Player3_Jump;
@@ -845,6 +946,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         private @PlayerInputAction m_Wrapper;
         public Player3Actions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Emote => m_Wrapper.m_Player3_Emote;
+        public InputAction @SShoot => m_Wrapper.m_Player3_SShoot;
         public InputAction @Sprint => m_Wrapper.m_Player3_Sprint;
         public InputAction @Shoot => m_Wrapper.m_Player3_Shoot;
         public InputAction @Jump => m_Wrapper.m_Player3_Jump;
@@ -861,6 +963,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Emote.started += instance.OnEmote;
             @Emote.performed += instance.OnEmote;
             @Emote.canceled += instance.OnEmote;
+            @SShoot.started += instance.OnSShoot;
+            @SShoot.performed += instance.OnSShoot;
+            @SShoot.canceled += instance.OnSShoot;
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
@@ -880,6 +985,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Emote.started -= instance.OnEmote;
             @Emote.performed -= instance.OnEmote;
             @Emote.canceled -= instance.OnEmote;
+            @SShoot.started -= instance.OnSShoot;
+            @SShoot.performed -= instance.OnSShoot;
+            @SShoot.canceled -= instance.OnSShoot;
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
@@ -914,6 +1022,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player4;
     private List<IPlayer4Actions> m_Player4ActionsCallbackInterfaces = new List<IPlayer4Actions>();
     private readonly InputAction m_Player4_Move;
+    private readonly InputAction m_Player4_SShoot;
     private readonly InputAction m_Player4_Jump;
     private readonly InputAction m_Player4_Shoot;
     private readonly InputAction m_Player4_Sprint;
@@ -923,6 +1032,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         private @PlayerInputAction m_Wrapper;
         public Player4Actions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player4_Move;
+        public InputAction @SShoot => m_Wrapper.m_Player4_SShoot;
         public InputAction @Jump => m_Wrapper.m_Player4_Jump;
         public InputAction @Shoot => m_Wrapper.m_Player4_Shoot;
         public InputAction @Sprint => m_Wrapper.m_Player4_Sprint;
@@ -939,6 +1049,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @SShoot.started += instance.OnSShoot;
+            @SShoot.performed += instance.OnSShoot;
+            @SShoot.canceled += instance.OnSShoot;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -958,6 +1071,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @SShoot.started -= instance.OnSShoot;
+            @SShoot.performed -= instance.OnSShoot;
+            @SShoot.canceled -= instance.OnSShoot;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -994,10 +1110,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnEmote(InputAction.CallbackContext context);
+        void OnSShoot(InputAction.CallbackContext context);
     }
     public interface IPlayer2Actions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnSShoot(InputAction.CallbackContext context);
         void OnEmote(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
@@ -1006,6 +1124,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     public interface IPlayer3Actions
     {
         void OnEmote(InputAction.CallbackContext context);
+        void OnSShoot(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
@@ -1014,6 +1133,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     public interface IPlayer4Actions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnSShoot(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);

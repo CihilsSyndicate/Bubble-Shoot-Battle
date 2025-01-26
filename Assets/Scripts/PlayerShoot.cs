@@ -11,6 +11,9 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Vector3 specialBulletScale = new Vector3(0.5f, 0.5f, 0.5f); // Ukuran peluru special
     [SerializeField] private GameInput gameInput;
     [SerializeField] private ParticleSystem specialShoot; // [1
+    [SerializeField] private Player player; 
+
+    private bool specialShootReady = true;
 
     private float lastShootTime;
     private GameObject currentSpecialBullet;
@@ -27,7 +30,7 @@ public class PlayerShoot : MonoBehaviour
             Shoot();
             lastShootTime = Time.time;
         }
-        if (gameInput.GetSpecialShootInput(this.gameObject) && Time.time > lastShootTime + shootCooldown)
+        if (gameInput.GetSpecialShootInput(this.gameObject) && Time.time > lastShootTime + shootCooldown && specialShootReady)
         {
             SpecialShoot();
             lastShootTime = Time.time;
@@ -54,6 +57,13 @@ public class PlayerShoot : MonoBehaviour
             return; // Jika peluru spesial sudah ada, hentikan eksekusi
         }
 
+        if (player != null)
+        {
+            player.SetSpecialShooting(true);
+        }
+
+        specialShootReady = false;
+
         ParticleSystem effect = Instantiate(specialShoot, shootPoint.position, Quaternion.identity);
         effect.transform.SetParent(shootPoint); // Set effect as a child of shootPoint
         effect.Play();
@@ -65,7 +75,7 @@ public class PlayerShoot : MonoBehaviour
 
     private IEnumerator SpecialShootRoutine()
     {
-        // Menunggu selama 2 detik sebelum peluru ditembakkan
+        // Menunggu selama 2 detik sebelum peluru 
         yield return new WaitForSeconds(2f);
 
         currentSpecialBullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
@@ -78,6 +88,12 @@ public class PlayerShoot : MonoBehaviour
         }
 
         Destroy(currentSpecialBullet, 5f);
+        if (player != null)
+        {
+            player.SetSpecialShooting(false);
+        }
+        specialShootReady = true;
         currentSpecialBullet = null; // Reset setelah peluru dihancurkan
     }
 }
+    

@@ -128,13 +128,13 @@ public class GameInput : MonoBehaviour
         switch (GO.name)
         {
             case "Player1":
-                return playerInputAction.Player.Shoot.IsPressed();
+                return playerInputAction.Player.SShoot.IsPressed();
             case "Player2":
-                return playerInputAction.Player2.Shoot.IsPressed();
+                return playerInputAction.Player2.SShoot.IsPressed();
             case "Player3":
-                return playerInputAction.Player3.Shoot.IsPressed();
+                return playerInputAction.Player3.SShoot.IsPressed();
             case "Player4":
-                return playerInputAction.Player4.Shoot.IsPressed();
+                return playerInputAction.Player4.SShoot.IsPressed();
             default:
                 return false;
         }
