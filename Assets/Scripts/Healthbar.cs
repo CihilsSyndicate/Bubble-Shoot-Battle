@@ -10,6 +10,11 @@ public class Healthbar : MonoBehaviour
     [SerializeField] private GameObject healthbarP3GO;
     [SerializeField] private GameObject healthbarP4GO;
 
+    [SerializeField] private GameObject indicatorP1;
+    [SerializeField] private GameObject indicatorP2;
+    [SerializeField] private GameObject indicatorP3;
+    [SerializeField] private GameObject indicatorP4;
+
     [SerializeField] private Image healthbarP1;
     [SerializeField] private Image healthbarP2;
     [SerializeField] private Image healthbarP3;
@@ -32,18 +37,22 @@ public class Healthbar : MonoBehaviour
         if (gameObject.name == "Player1")
         {
             healthbarP1GO.gameObject.SetActive(true);
+            indicatorP1.SetActive(true);
         }
         if (gameObject.name == "Player2")
         {
             healthbarP2GO.gameObject.SetActive(true);
+            indicatorP2.SetActive(true);
         }
         if (gameObject.name == "Player3")
         {
             healthbarP3GO.gameObject.SetActive(true);
+            indicatorP3.SetActive(true);
         }
         if (gameObject.name == "Player4")
         {
             healthbarP4GO.gameObject.SetActive(true);
+            indicatorP4.SetActive(true);
         }
     }
 
@@ -97,6 +106,6 @@ public class Healthbar : MonoBehaviour
     // Metode yang dipanggil saat player mati
     private void OnDeath()
     {
-        Destroy(gameObject);
+        
     }
 }
