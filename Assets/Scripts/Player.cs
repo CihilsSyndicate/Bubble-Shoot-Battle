@@ -133,4 +133,13 @@ public class Player : MonoBehaviour
     {
         animator.SetBool("IsShooting", false);
     }
+
+    public void OnDeath()
+    {
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("IsRunning", false);
+        animator.SetBool("IsShooting", false);
+        animator.SetBool("IsEmoting", false);
+        animator.SetBool("IsDying", true);
+    }
 }
