@@ -11,7 +11,9 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Vector3 specialBulletScale = new Vector3(0.5f, 0.5f, 0.5f); // Ukuran peluru special
     [SerializeField] private GameInput gameInput;
     [SerializeField] private ParticleSystem specialShoot; // [1
-    [SerializeField] private Player player; 
+    [SerializeField] private Player player;
+    [SerializeField] private AudioSource sfx;
+    [SerializeField] private AudioSource sfxHold;
 
     private bool specialShootReady = true;
 
@@ -40,6 +42,7 @@ public class PlayerShoot : MonoBehaviour
     private void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
+        sfx.Play();
 
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         if (bulletRb != null)
@@ -65,6 +68,7 @@ public class PlayerShoot : MonoBehaviour
         specialShootReady = false;
 
         ParticleSystem effect = Instantiate(specialShoot, shootPoint.position, Quaternion.identity);
+        sfxHold.Play();
         effect.transform.SetParent(shootPoint); // Set effect as a child of shootPoint
         effect.Play();
         Debug.Log(effect.main.duration);
