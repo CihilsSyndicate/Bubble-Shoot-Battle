@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 876581188219980219, guid: 5c42081185c31544db838fe3d9aabc89, type: 3}
+  sfx: {fileID: 0}
+  holdSfx: {fileID: 0}
 --- !u!96 &7812536746691612969
 TrailRenderer:
   serializedVersion: 3
@@ -191,7 +193,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.23
-  m_PreviewTimeScale: 1
+  m_PreviewTimeScale: 0
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
