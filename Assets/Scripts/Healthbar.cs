@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    [SerializeField] private Player player;
     [SerializeField] private GameObject healthbarP1GO;
     [SerializeField] private GameObject healthbarP2GO;
     [SerializeField] private GameObject healthbarP3GO;
@@ -22,8 +21,6 @@ public class Healthbar : MonoBehaviour
     [SerializeField] private Image healthbarP4;
     [SerializeField] private GameObject parent;
     [SerializeField] private float maxHealth = 100f;
-
-    [SerializeField] private ParticleSystem death;
     private float currentHealth;
 
     private void Start()
@@ -109,8 +106,6 @@ public class Healthbar : MonoBehaviour
     // Metode yang dipanggil saat player mati
     private void OnDeath()
     {
-        player.OnDeath();
-        death.Play();
-        Destroy(death.gameObject, death.main.duration);
+        
     }
 }
