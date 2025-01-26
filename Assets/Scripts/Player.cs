@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     private float moveSpeed;
     private bool isWalking;
     private bool isRunning;
-    private bool isJumping;
 
     private void Awake()
     {
@@ -28,7 +27,17 @@ public class Player : MonoBehaviour
     {
         if (animator.GetBool("IsEmoting"))
         {
-            ResetAllAnimatorFlags();
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsRunning", false);
+            animator.SetBool("IsShooting", false);
+            return;
+        }
+
+        if (animator.GetBool("IsShooting"))
+        {
+            animator.SetBool("IsWalking", false);
+            animator.SetBool("IsRunning", false);
+            animator.SetBool("IsEmoting", false);
             return;
         }
 
@@ -66,53 +75,30 @@ public class Player : MonoBehaviour
     // Handle player actions like jumping, emoting, and shooting
     private void HandleActions()
     {
-        if (gameInput.GetJumpInput(this.gameObject))
-        {
-            Jump();
-        }
-
         if (gameInput.GetEmoteInput(this.gameObject) && !animator.GetBool("IsEmoting"))
         {
             animator.SetBool("IsEmoting", true);
+            Debug.Log("Emote");
         }
 
-        if (gameInput.GetShootInput(this.gameObject) && !animator.GetBool("IsShooting") && !isWalking && !isRunning)
+        if (gameInput.GetShootInput(this.gameObject) && !animator.GetBool("IsShooting"))
         {
-            animator.SetBool("IsShooting", true);
+            if (!isWalking && !isRunning)
+            {
+                animator.SetBool("IsShooting", true);
+            }
         }
-    }
-
-    // Jump logic
-    private void Jump()
-    {
-        isJumping = true;
-        animator.SetBool("IsJumping", isJumping);
-    }
-
-    // Reset all animator flags
-    private void ResetAllAnimatorFlags()
-    {
-        animator.SetBool("IsJumping", false);
-        animator.SetBool("IsWalking", false);
-        animator.SetBool("IsRunning", false);
-        animator.SetBool("IsShooting", false);
     }
 
     // Public helper methods for external access
     public bool IsWalking() => isWalking;
     public bool IsRunning() => isRunning;
-    public bool IsJumping() => isJumping;
-
-    // Animation Event handlers
-    public void OnJumpAnimationEnd()
-    {
-        isJumping = false;
-        animator.SetBool("IsJumping", false);
-    }
 
     public void OnEmoteAnimationStart()
     {
-        ResetAllAnimatorFlags();
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("IsRunning", false);
+        animator.SetBool("IsShooting", false);
     }
 
     public void OnEmoteAnimationEnd()
@@ -122,7 +108,9 @@ public class Player : MonoBehaviour
 
     public void OnShootAnimationStart()
     {
-        ResetAllAnimatorFlags();
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("IsRunning", false);
+        animator.SetBool("IsEmoting", false);
     }
 
     public void OnShootAnimationEnd()
