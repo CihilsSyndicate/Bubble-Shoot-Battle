@@ -113,6 +113,6 @@ public class Healthbar : MonoBehaviour
         player.OnDeaths();
         death.Play();
         Destroy(death.gameObject, death.main.duration);
-        Destroy(gameObject, death.main.duration);
+        Destroy(gameObject, 2f);
     }
 }
