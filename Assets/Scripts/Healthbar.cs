@@ -1,3 +1,4 @@
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,9 @@ public class Healthbar : MonoBehaviour
     [SerializeField] private GameObject parent;
     [SerializeField] private float maxHealth = 100f;
     private float currentHealth;
+
+    [SerializeField] private Player player;
+    [SerializeField] private ParticleSystem death;
 
     private void Start()
     {
@@ -104,8 +108,11 @@ public class Healthbar : MonoBehaviour
     }
 
     // Metode yang dipanggil saat player mati
-    private void OnDeath()
+    public void OnDeath()
     {
-        
+        player.OnDeaths();
+        death.Play();
+        Destroy(death.gameObject, death.main.duration);
+        Destroy(gameObject, death.main.duration);
     }
 }
