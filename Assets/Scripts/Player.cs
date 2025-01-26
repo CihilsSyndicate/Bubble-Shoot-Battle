@@ -88,6 +88,14 @@ public class Player : MonoBehaviour
                 animator.SetBool("IsShooting", true);
             }
         }
+
+        if(gameInput.GetSpecialShootInput(this.gameObject) && !animator.GetBool("IsShooting"))
+        {
+            if (!isWalking && !isRunning)
+            {
+                animator.SetBool("IsShooting", true);
+            }
+        }
     }
 
     // Public helper methods for external access

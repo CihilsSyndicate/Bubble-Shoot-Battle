@@ -122,4 +122,21 @@ public class GameInput : MonoBehaviour
                 return false;
         }
     }
+
+    public bool GetSpecialShootInput(GameObject GO)
+    {
+        switch (GO.name)
+        {
+            case "Player1":
+                return playerInputAction.Player.Shoot.IsPressed();
+            case "Player2":
+                return playerInputAction.Player2.Shoot.IsPressed();
+            case "Player3":
+                return playerInputAction.Player3.Shoot.IsPressed();
+            case "Player4":
+                return playerInputAction.Player4.Shoot.IsPressed();
+            default:
+                return false;
+        }
+    }
 }

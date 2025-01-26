@@ -201,7 +201,9 @@ MonoBehaviour:
   shootPoint: {fileID: 2292074393768113834}
   bulletSpeed: 20
   shootCooldown: 0.5
+  specialBulletScale: {x: 0.5, y: 0.5, z: 0.5}
   gameInput: {fileID: 3271156481627317841, guid: 31881e54628a17e42b01bb419eb691db, type: 3}
+  specialShoot: {fileID: 198357083801700994, guid: 688aa4245172a0b4585d279cfee8f6c3, type: 3}
 --- !u!136 &2902098070030461524
 CapsuleCollider:
   m_ObjectHideFlags: 0
