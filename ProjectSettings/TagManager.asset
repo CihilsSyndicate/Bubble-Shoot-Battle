@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Wall
   - Bullet
+  - Spawn
   layers:
   - Default
   - TransparentFX

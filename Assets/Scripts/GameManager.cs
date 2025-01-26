@@ -1,20 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Transform[] playerSpawnPoints;
+    [SerializeField] private GameObject[] player;
 
     private const int MAX_PLAYERS = 4;
     private GameObject[] activePlayers = new GameObject[MAX_PLAYERS];
-    private int selectedPlayerCount = 2; // Jumlah pemain yang dipilih
+    [SerializeField] private int selectedPlayerCount = 1; // Jumlah pemain yang dipilih
+    private static GameManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
-        // Pilih jumlah pemain di awal game
-        SelectPlayerCount();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        //SelectPlayerCount();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && selectedPlayerCount < 4 && SceneManager.GetActiveScene().name == "NumberPlayer")
+        {
+            selectedPlayerCount++;
+            player[selectedPlayerCount - 1].SetActive(true);
+        }
     }
 
     private void SelectPlayerCount()
@@ -22,7 +47,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Pilih jumlah pemain (1 hingga " + MAX_PLAYERS + "):");
 
         // Simulasi jumlah pemain (bisa diganti dengan UI input)
-        selectedPlayerCount = 2; // Ubah sesuai kebutuhan (contoh 2 pemain)
+        //selectedPlayerCount = 1; // Ubah sesuai kebutuhan (contoh 2 pemain)
 
         // Validasi jumlah pemain
         if (selectedPlayerCount < 1 || selectedPlayerCount > MAX_PLAYERS)
@@ -53,9 +78,6 @@ public class GameManager : MonoBehaviour
 
                 // Assign player ke array aktif
                 activePlayers[i] = newPlayer;
-
-                // Setup input untuk player
-                //SetupPlayerInput(newPlayer, i);
             }
             else
             {
@@ -65,17 +87,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SetupPlayerInput(GameObject playerObject, int playerIndex)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GameInput gameInput = playerObject.GetComponent<GameInput>();
-        if (gameInput != null)
+        if (scene.name == "DesertMap")
         {
-            gameInput.EnablePlayerInput(playerIndex);
+            AssignSpawnPoints();
+            SelectPlayerCount();
         }
-        else
+    }
+
+    private void AssignSpawnPoints()
+    {
+        GameObject[] spawnObjects = GameObject.FindGameObjectsWithTag("Spawn");
+        if (spawnObjects.Length == 0)
         {
-            Debug.LogWarning($"GameInput is missing on the player prefab. Make sure the player prefab has a GameInput component.");
+            Debug.LogWarning("Tidak ada GameObject dengan tag 'Spawn' yang ditemukan di scene DesertMap.");
+            return;
         }
+
+        playerSpawnPoints = new Transform[spawnObjects.Length];
+
+        for (int i = 0; i < spawnObjects.Length; i++)
+        {
+            playerSpawnPoints[i] = spawnObjects[i].transform;
+        }
+
+        Debug.Log($"{spawnObjects.Length} spawn points telah diassign.");
     }
 
     private void ShuffleList(List<Transform> list)
@@ -88,5 +125,15 @@ public class GameManager : MonoBehaviour
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
